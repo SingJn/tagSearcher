@@ -68,16 +68,14 @@ def search():
             if conditionArray[countCondition] == tag: # 같으면
                 countCondition += 1 # 일치한 조건 개수 => 1
                 if countCondition + 1 == len(conditionArray): # 조건이 1개뿐이라면 출력
-                    print("2")
-                    print(conditionArray)
                     tagSearchResult = conditionArray
                     print(tagSearchResult)
                 for tag in tagInput:
                     if conditionArray[countCondition] == tag: #같으면
                         countCondition += 1 # 일치한 조건 개수 => 2
                         if countCondition + 1 == len(conditionArray): # 조건이 2개뿐이라면 출력
-                            print("")
-                            print(conditionArray)
+                            tagSearchResult = conditionArray
+                            print(tagSearchResult)
     if tagSearchResult == "":
         print("쟌넨")
                             
