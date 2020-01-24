@@ -1,4 +1,4 @@
-combinationDB = [
+var combinationDB = [
     ["뱅가드", "서포트", "★5 지마"],
     ["코스트+", "서포트", "★5 지마"],
     ["뱅가드", "군중제어", "★5 텍서스"],
@@ -58,44 +58,63 @@ combinationDB = [
     ["감속", "딜러", "★4 이상 이스티나, 프로스트리프"],
     ["서포트", "근거리", "★4 이상 도베르만, 지마"],
     ["A", "B", "C", "D", "E", "RESULT"]
-]
-tagInput = ['', '', '', '', '']
-# countCondition = 0
+];
+var tagInput = ['','','','',''];
+var tagInputCount = 0;
 
-# def compare(conditionArray, countCondition):
-#     for tag in tagInput: # 첫 번째 조건 비교
-#         if conditionArray[countCondition] == tag: # 같으면
-#             countCondition += 1 # 일치한 조건 개수 => 1
-#             print(countCondition)
-#             if countCondition + 1 == len(conditionArray): # 조건이 1개뿐이라면 출력
-#                 tagSearchResult = conditionArray
-#                 print(tagSearchResult)
-#                 if countCondition + 1 < len(conditionArray):
-#                     compare(conditionArray, countCondition)
-#                 countCondition = 0
-#                 return tagSearchResult
 
-def search():
-    tagSearchResult = ""
-    for conditionArray in combinationDB: # 조건 전체 가져오기)
-        countCondition = 0 # 일치한 조건 개수 변수 초기화
-        for tag in tagInput: # 첫 번째 조건 비교
-            if conditionArray[countCondition] == tag: # 같으면
-                countCondition += 1 # 일치한 조건 개수 => 1
-                if countCondition + 1 == len(conditionArray): # 조건이 1개뿐이라면 출력
-                    tagSearchResult = conditionArray
-                    print(tagSearchResult)
-                for tag in tagInput:
-                    if conditionArray[countCondition] == tag: #같으면
-                        countCondition += 1 # 일치한 조건 개수 => 2
-                        if countCondition + 1 == len(conditionArray): # 조건이 2개뿐이라면 출력
-                            tagSearchResult = conditionArray
-                            print(tagSearchResult)
-    if tagSearchResult == "":
-        print("쟌넨")
+/* when website get upload, focus on InputArea for attribute */
+window.onload = focusOnInput;
+function focusOnInput() {
+    document.getElementById("inputArea").focus();
+}
 
-for i in range(1, 7):
-    if i == 6:
-        search()
-    else:
-        tagInput[i-1] = input(str(i) + " 번째 태그를 입력해주세요  :  ")
+/* when addButton get click */
+document.getElementById("addButton").onclick = function() {
+    addAction();
+}
+function addAction() {
+    /* add tags to Result */
+    inputValue = document.getElementById("inputArea").value;
+    Result = document.getElementById("tags").innerHTML;
+    document.getElementById("tags").innerHTML = Result + " " + inputValue;
+    tagInput[tagInputCount] = inputValue;
+    tagInputCount += 1;
+    /* clean inputArea */
+    document.getElementById("inputArea").value = "";
+    document.getElementById("inputArea").focus();
+    if (tagInput[4] != '') {
+        search();
+    }
+}
+
+function search() {
+    var tagSearchResult = ""
+    for (conditionArray in combinationDB) {
+        var countCondition = 0;
+        for (tag in tagInput) {
+            if (combinationDB[conditionArray][countCondition] == tagInput[tag]) {
+                countCondition += 1;
+                if (countCondition + 1 == combinationDB[conditionArray].length) {
+                    tagSearchResult = combinationDB[conditionArray];
+                    outputText = document.getElementById("outputArea").innerHTML;
+                    document.getElementById("outputArea").innerHTML = outputText + tagSearchResult + "\n";
+                }
+                for (tag in tagInput) {
+                    if (combinationDB[conditionArray][countCondition] == tagInput[tag]) {
+                        countCondition += 1;
+                        if (countCondition + 1 == combinationDB[conditionArray].length) {
+                            tagSearchResult = combinationDB[conditionArray];
+                            outputText = document.getElementById("outputArea").innerHTML;
+                            document.getElementById("outputArea").innerHTML = outputText + tagSearchResult + "\n";
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+    if (tagSearchResult == "") {
+        document.getElementById("outputArea").innerHTML = "쟌넨";
+    }
+}
