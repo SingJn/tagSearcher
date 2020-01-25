@@ -102,30 +102,37 @@ for (i=0; i<combinationDB.length; i++) {
 combinationListDB = combinationListDB.sort();
 
 /* make button from combinationListDB */
+/* 입력 태그 개수 추가 */
 function getButtonValue(i) {
-    tagInput.push(i);
+    if(tagInput.indexOf(i) == -1) {
+        tagInput.push(i);
+        tagInputCount += 1;
+    } else {
+        tagInput.splice(tagInput.indexOf(i), 1);
+        tagInputCount -= 1;
+    }
+    /* 입력 태그 개수가 5개가 되면 검색 함수 실행*/
+    if(tagInputCount >= 5) {
+        search();
+    }
 }
 for (i=0; i<combinationListDB.length; i++) {
+    /* combinationListDB의 요소를 id로 가진 버튼 만들기 */
     var tagButton = document.createElement("button");
     tagButton.innerHTML = combinationListDB[i];
     tagButton.id = combinationListDB[i];
-
     var body = document.getElementsByClassName("input")[0];
     body.appendChild(tagButton);
-
+    /* 해당 버튼 누를 시, tagInput에 push or splice 그리고 태그 변화 */
     tagButton.addEventListener ("click", function () {
         getButtonValue(this.id)
-
-        /* 입력 태그 개수 추가 */
-        tagInputCount += 1;
-        /* 입력 태그 개수가 5개가 되면 검색 함수 실행*/
-        if(tagInputCount >= 5) {
-            search();
+        /* add tags to Result from tagInput array every button click*/
+        document.getElementById("tags").innerHTML = "태그 : ";
+        for(i =0; i<tagInput.length; i++) {
+            inputValue = tagInput[i];
+            Result = document.getElementById("tags").innerHTML;
+            document.getElementById("tags").innerHTML = Result + " " + inputValue;
         }
-        /* add tags to Result */
-        inputValue = this.id;
-        Result = document.getElementById("tags").innerHTML;
-        document.getElementById("tags").innerHTML = Result + " " + inputValue;
     });
 }
 
