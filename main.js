@@ -65,32 +65,6 @@ var combinationListDB = []
 var tagInput = [];
 var tagInputCount = 0;
 
-
-// /* when website get upload, focus on InputArea for attribute */
-// window.onload = focusOnInput;
-// function focusOnInput() {
-//     document.getElementById("inputArea").focus();
-// }
-
-// /* when addButton get click */
-// document.getElementById("addButton").onclick = function() {
-//     addAction();
-// }
-// function addAction() {
-//     /* add tags to Result */
-//     inputValue = document.getElementById("inputArea").value;
-//     Result = document.getElementById("tags").innerHTML;
-//     document.getElementById("tags").innerHTML = Result + " " + inputValue;
-//     tagInput[tagInputCount] = inputValue;
-//     tagInputCount += 1;
-//     /* clean inputArea */
-//     document.getElementById("inputArea").value = "";
-//     document.getElementById("inputArea").focus();
-//     if (tagInput[4] != '') {
-//         search();
-//     }
-// }
-
 /* make condition array */
 for (i=0; i<combinationDB.length; i++) {
     for (j=0; j<combinationDB[i].length-1; j++) {
