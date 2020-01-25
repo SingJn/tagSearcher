@@ -65,7 +65,7 @@ var combinationListDB = []
 var tagInput = [];
 var tagInputCount = 0;
 
-/* make condition array */
+/* make condition array 그리고 가나다순 정렬*/
 for (i=0; i<combinationDB.length; i++) {
     for (j=0; j<combinationDB[i].length-1; j++) {
         if (combinationListDB.indexOf(combinationDB[i][j]) == -1) {
@@ -88,8 +88,21 @@ function getButtonValue(i) {
     /* 입력 태그 개수가 5개가 되면 검색 함수 실행*/
     if(tagInputCount >= 5) {
         search();
+    } else {
+        document.getElementById("outputArea").innerHTML = "";
     }
 }
+
+/* 버튼 만들기 */
+function outputUpdate() {
+    for(i =0; i<tagInput.length; i++) {
+        inputValue = tagInput[i];
+        Result = document.getElementById("tags").innerHTML;
+        document.getElementById("tags").innerHTML = Result + " " + inputValue;
+    }
+}
+
+
 for (i=0; i<combinationListDB.length; i++) {
     /* combinationListDB의 요소를 id로 가진 버튼 만들기 */
     var tagButton = document.createElement("button");
@@ -102,14 +115,17 @@ for (i=0; i<combinationListDB.length; i++) {
         getButtonValue(this.id)
         /* add tags to Result from tagInput array every button click*/
         document.getElementById("tags").innerHTML = "태그 : ";
-        for(i =0; i<tagInput.length; i++) {
-            inputValue = tagInput[i];
-            Result = document.getElementById("tags").innerHTML;
-            document.getElementById("tags").innerHTML = Result + " " + inputValue;
-        }
+        outputUpdate();
     });
 }
 
+/* 새로고침버튼 */
+document.getElementById("refreshButton").onclick = function() {
+    tagInput = [];
+    tagInputCount = 0;
+    document.getElementById("tags").innerHTML = "태그 : ";
+    document.getElementById("outputArea").innerHTML = " ";
+}
 
 function search() {
     var tagSearchResult = ""
