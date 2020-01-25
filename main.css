@@ -28,7 +28,6 @@ body {
     margin-top: 24px;
     margin-bottom: 24px;
 }
-
 button {
     padding: 7px 11px 7px;
     border-radius: 11px;
@@ -39,6 +38,9 @@ button {
     margin-bottom: 9px;
     border: none;
     box-shadow: 0 2px #0068B8;
+}
+.input {
+    text-align: center;
 }
 .tagTab {
     display: flex;
