@@ -5,6 +5,7 @@ body {
     margin: 0px 12px 0px;
     font-size: 12px;
     text-align: center;
+    touch-action: manipulation;
 }
 
 #mainTitle, #subTitle {
