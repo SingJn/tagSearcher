@@ -16,10 +16,10 @@ var combinationDB = [
     ["디버프", "서포터", "★5 프라마닉스"],
     ["딜러", "서포터", "★5 이스티나"],
     ["소환", "★5 메이어"],
-    ["서포터" ,"★5 군중제어", "메이어"],
-    ["원거리", "★5 군중제어", "메이어"],
-    ["군중제어", "★5 쾌속부활", "레드"],
-    ["군중제어", "★5 스페셜리스트", "레드"],
+    ["서포터" ,"군중제어", "★5 메이어"],
+    ["원거리", "군중제어", "★5 메이어"],
+    ["군중제어", "쾌속부활", "★5 레드"],
+    ["군중제어", "스페셜리스트", "★5 레드"],
     ["스페셜리스트", "딜러", "★5 만티코어, 클리프하트"],
     ["스페셜리스트", "생존형", "★5 만티코어, 클리프하트"],
     ["스페셜리스트", "감속", "★5 에프이터"],
@@ -47,8 +47,8 @@ var combinationDB = [
     ["남성대원", "근거리", "★4 이상 마터호른"],
     ["스페셜리스트", "★4 이상 레드, 만티코어, 클리프하트, 에픵터, 쇼, 로프, 그라벨"],
     ["쾌속부활", "★4 이상 그라벨, 레드"],
-    ["스페셜리스트", "★4 이상 방어형", "그라벨"],
-    ["쾌속부활, 방어형", "★4 이상 그라벨"],
+    ["스페셜리스트", "방어형", "★4 그라벨"],
+    ["쾌속부활", "방어형", "★4 이상 그라벨"],
     ["스페셜리스트", "강제이동", "★4 이상 클리프하트, 에프이터, 로프, 쇼"],
     ["강제이동", "★4 이상 클리프하트, 에프이터, 로프, 쇼, 크루아상"],
     ["서포트", "★4 이상 지마, 프틸롭시스, 와파린, 도베르만"],
@@ -57,36 +57,78 @@ var combinationDB = [
     ["감속", "근거리", "★4 이상 프로스트리프, 에프이터"],
     ["감속", "딜러", "★4 이상 이스티나, 프로스트리프"],
     ["서포트", "근거리", "★4 이상 도베르만, 지마"],
-    ["A", "B", "C", "D", "E", "RESULT"]
+    ["경력대원", "★5 확률증가"],
+    ["고급경력대원", "★6 확정"],
+    ["신입", "★1~2 확률증가"]
 ];
-var tagInput = ['','','','',''];
+var combinationListDB = []
+var tagInput = [];
 var tagInputCount = 0;
 
 
-/* when website get upload, focus on InputArea for attribute */
-window.onload = focusOnInput;
-function focusOnInput() {
-    document.getElementById("inputArea").focus();
-}
+// /* when website get upload, focus on InputArea for attribute */
+// window.onload = focusOnInput;
+// function focusOnInput() {
+//     document.getElementById("inputArea").focus();
+// }
 
-/* when addButton get click */
-document.getElementById("addButton").onclick = function() {
-    addAction();
-}
-function addAction() {
-    /* add tags to Result */
-    inputValue = document.getElementById("inputArea").value;
-    Result = document.getElementById("tags").innerHTML;
-    document.getElementById("tags").innerHTML = Result + " " + inputValue;
-    tagInput[tagInputCount] = inputValue;
-    tagInputCount += 1;
-    /* clean inputArea */
-    document.getElementById("inputArea").value = "";
-    document.getElementById("inputArea").focus();
-    if (tagInput[4] != '') {
-        search();
+// /* when addButton get click */
+// document.getElementById("addButton").onclick = function() {
+//     addAction();
+// }
+// function addAction() {
+//     /* add tags to Result */
+//     inputValue = document.getElementById("inputArea").value;
+//     Result = document.getElementById("tags").innerHTML;
+//     document.getElementById("tags").innerHTML = Result + " " + inputValue;
+//     tagInput[tagInputCount] = inputValue;
+//     tagInputCount += 1;
+//     /* clean inputArea */
+//     document.getElementById("inputArea").value = "";
+//     document.getElementById("inputArea").focus();
+//     if (tagInput[4] != '') {
+//         search();
+//     }
+// }
+
+/* make condition array */
+for (i=0; i<combinationDB.length; i++) {
+    for (j=0; j<combinationDB[i].length-1; j++) {
+        if (combinationListDB.indexOf(combinationDB[i][j]) == -1) {
+            combinationListDB.push(combinationDB[i][j]);
+        }
     }
 }
+combinationListDB = combinationListDB.sort();
+
+/* make button from combinationListDB */
+function getButtonValue(i) {
+    tagInput.push(i);
+}
+for (i=0; i<combinationListDB.length; i++) {
+    var tagButton = document.createElement("button");
+    tagButton.innerHTML = combinationListDB[i];
+    tagButton.id = combinationListDB[i];
+
+    var body = document.getElementsByClassName("input")[0];
+    body.appendChild(tagButton);
+
+    tagButton.addEventListener ("click", function () {
+        getButtonValue(this.id)
+
+        /* 입력 태그 개수 추가 */
+        tagInputCount += 1;
+        /* 입력 태그 개수가 5개가 되면 검색 함수 실행*/
+        if(tagInputCount >= 5) {
+            search();
+        }
+        /* add tags to Result */
+        inputValue = this.id;
+        Result = document.getElementById("tags").innerHTML;
+        document.getElementById("tags").innerHTML = Result + " " + inputValue;
+    });
+}
+
 
 function search() {
     var tagSearchResult = ""
@@ -112,7 +154,6 @@ function search() {
                 }
             }
         }
-        
     }
     if (tagSearchResult == "") {
         document.getElementById("outputArea").innerHTML = "쟌넨";
