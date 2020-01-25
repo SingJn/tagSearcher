@@ -32,7 +32,7 @@ var combinationDB = [
     ["생존형", "스나이퍼", "★4 이상 제시카"],
     ["생존형", "원거리", "★4 이상 제시카"],
     ["디버프", "스나이퍼", "★4 이상 메테오리테, 메테오"],
-    ["디버프", "캐스트", "★4 이상 헤이즈"],
+    ["디버프", "캐스터", "★4 이상 헤이즈"],
     ["서포트", "가드", "★4 이상 도베르만"],
     ["서포트", "딜러" ,"★4 이상 도베르만"],
     ["범위공격", "가드", "★4 이상 스펙터, 에스텔"],
@@ -134,7 +134,7 @@ for (i=0; i<combinationListDB.length; i++) {
 document.getElementById("refreshButton").onclick = function() {
     tagInput = [];
     tagInputCount = 0;
-    document.getElementById("tags").innerHTML = "태그 : ";
+    document.getElementById("tags").innerHTML = '태그 : <span id="placeholder">상단에서 5개의 태그를 선택해주세요</span>';
     document.getElementById("outputArea").innerHTML = " ";
     buttonStatus();
 }
@@ -149,7 +149,7 @@ function search() {
                 if (countCondition + 1 == combinationDB[conditionArray].length) {
                     tagSearchResult = combinationDB[conditionArray];
                     outputText = document.getElementById("outputArea").innerHTML;
-                    document.getElementById("outputArea").innerHTML = outputText + tagSearchResult + "\n";
+                    document.getElementById("outputArea").innerHTML = outputText + tagSearchResult + "<br /><br />";
                 }
                 for (tag in tagInput) {
                     if (combinationDB[conditionArray][countCondition] == tagInput[tag]) {
@@ -157,7 +157,7 @@ function search() {
                         if (countCondition + 1 == combinationDB[conditionArray].length) {
                             tagSearchResult = combinationDB[conditionArray];
                             outputText = document.getElementById("outputArea").innerHTML;
-                            document.getElementById("outputArea").innerHTML = outputText + tagSearchResult + "\n";
+                            document.getElementById("outputArea").innerHTML = outputText + tagSearchResult + "<br /><br />";
                         }
                     }
                 }

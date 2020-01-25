@@ -3,6 +3,8 @@ body {
     background-color: #0E0E0E;
     color: #FFFFFF;
     margin: 0px 12px 0px;
+    font-size: 12px;
+    text-align: center;
 }
 
 #mainTitle, #subTitle {
@@ -44,10 +46,12 @@ button {
 }
 .tagTab {
     display: flex;
-    flex-wrap: wrap;
     background-color: #FFFFFF;
     border-radius: 11px;
     margin-top: 15px;
+}
+#placeholder {
+    opacity: 25%;
 }
 #tags {
     color: #2E2E2E;
@@ -55,6 +59,7 @@ button {
     font-weight: bolder;
     margin-top: 12px;
     margin-bottom: 12px;
+
 }
 #refreshButton {
     font-weight: bold;
@@ -63,4 +68,12 @@ button {
     box-shadow: 0 2px #C5C5C5;
     margin: 0;
     margin-top: 12px;
+}
+#outputArea {
+    display: flex;
+    margin-top: 24px;
+    border-radius: 11px;
+    border: none;
+    color: #FFFFFF;
+    text-align: left;
 }
