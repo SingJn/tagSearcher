@@ -1,0 +1,64 @@
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #0E0E0E;
+    color: #FFFFFF;
+    margin: 0px 12px 0px;
+}
+
+#mainTitle, #subTitle {
+    margin: 0;
+    color: #FFFFFF;
+}
+
+#mainTitle {
+    font-size: 25px;
+    font-weight: 900;
+    margin-top: -5px;
+}
+
+#subTitle {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.webServiceTitle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+button {
+    padding: 7px 11px 7px;
+    border-radius: 11px;
+    color: #FFFFFF;
+    background-color: #0A84FF;
+    font-weight: bold;
+    margin-right: 12px;
+    margin-bottom: 9px;
+    border: none;
+    box-shadow: 0 2px #0068B8;
+}
+.tagTab {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #FFFFFF;
+    border-radius: 11px;
+    margin-top: 15px;
+}
+#tags {
+    color: #2E2E2E;
+    padding-left: 12px;
+    font-weight: bolder;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+#refreshButton {
+    font-weight: bold;
+    background-color: #FFFFFF;
+    color: #0A84FF;
+    box-shadow: 0 2px #C5C5C5;
+    margin: 0;
+    margin-top: 12px;
+}
