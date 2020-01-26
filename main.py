@@ -60,20 +60,6 @@ combinationDB = [
     ["A", "B", "C", "D", "E", "RESULT"]
 ]
 tagInput = ['', '', '', '', '']
-# countCondition = 0
-
-# def compare(conditionArray, countCondition):
-#     for tag in tagInput: # 첫 번째 조건 비교
-#         if conditionArray[countCondition] == tag: # 같으면
-#             countCondition += 1 # 일치한 조건 개수 => 1
-#             print(countCondition)
-#             if countCondition + 1 == len(conditionArray): # 조건이 1개뿐이라면 출력
-#                 tagSearchResult = conditionArray
-#                 print(tagSearchResult)
-#                 if countCondition + 1 < len(conditionArray):
-#                     compare(conditionArray, countCondition)
-#                 countCondition = 0
-#                 return tagSearchResult
 
 def search():
     tagSearchResult = ""

@@ -7,6 +7,29 @@ body {
     text-align: center;
     touch-action: manipulation;
 }
+.language {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 12px;
+    padding-right: 6px;
+    background: rgba(256, 256, 256, 10%);
+    border-radius: 15px;
+    flex-wrap: wrap;
+}
+
+.language * {
+    margin: 8px 12px 9px;
+    font-size: 15px;
+    opacity: 80%;
+}
+
+#kr {
+    font-weight: bold;
+}
+
+#jp {
+    opacity: 30%;
+}
 
 #mainTitle, #subTitle {
     margin: 0;
