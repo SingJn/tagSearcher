@@ -137,11 +137,12 @@ document.getElementById("kr").onclick = function() {
     }
     combinationDB = combinationDBkr;
     document.getElementById("kr").style.fontWeight = "bold";
-    document.getElementById("kr").style.opacity = "80%";
+    document.getElementById("kr").style.opacity = "0.8";
     document.getElementById("jp").style.fontWeight = "400";
-    document.getElementById("jp").style.opacity = "30%";
+    document.getElementById("jp").style.opacity = "0.3";
     makeCondition();
     makeButton();
+    refresh();
 };
 document.getElementById("jp").onclick = function() {
     for(i=0; i<combinationListDB.length; i++) {
@@ -149,11 +150,12 @@ document.getElementById("jp").onclick = function() {
     }
     combinationDB = combinationDBjp;
     document.getElementById("jp").style.fontWeight = "bold";
-    document.getElementById("jp").style.opacity = "80%";
-    document.getElementById("kr").style.fontWeight = "none";
-    document.getElementById("kr").style.opacity = "30%";
+    document.getElementById("jp").style.opacity = "0.8";
+    document.getElementById("kr").style.fontWeight = "400";
+    document.getElementById("kr").style.opacity = "0.3";
     makeCondition();
     makeButton();
+    refresh();
 };
 
 /* make condition array 그리고 가나다순 정렬*/
@@ -191,10 +193,19 @@ function getButtonValue(i) {
 
 /* outputTextarea update */
 function outputUpdate() {
+    const parent = document.getElementsByClassName("tags")[0];
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
     for(i =0; i<tagInput.length; i++) {
-        inputValue = tagInput[i];
-        Result = document.getElementById("tags").innerHTML;
-        document.getElementById("tags").innerHTML = Result + " " + inputValue;
+        var inputSpan = document.createElement("button");
+        inputSpan.id = "inputSpan";
+        inputSpan.innerHTML = tagInput[i]; 
+        var tagBody = document.getElementsByClassName("tags")[0];
+        tagBody.appendChild(inputSpan);
+        // inputValue = tagInput[i];
+        // Result = document.getElementById("tags").innerHTML;
+        // document.getElementById("tags").innerHTML = Result + " " + inputSpan;
     }
 }
 
@@ -222,7 +233,11 @@ function makeButton() {
         tagButton.addEventListener ("click", function () {
             getButtonValue(this.id)
             /* add tags to Result from tagInput array every button click*/
-            document.getElementById("tags").innerHTML = "태그 : ";
+            var inputSpan = document.createElement("span");
+            inputSpan.id = "placeholder";
+            inputSpan.innerHTML = "상단에서 5개의 태그를 선택해주세요"; 
+            var tagBody = document.getElementsByClassName("tags")[0];
+            tagBody.appendChild(inputSpan);
             outputUpdate();
             buttonStatus();
         });
@@ -232,11 +247,23 @@ makeButton();
 
 /* 새로고침버튼 */
 document.getElementById("refreshButton").onclick = function() {
+    refresh();
+}
+
+function refresh() {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
     tagInput = [];
     tagInputCount = 0;
-    document.getElementById("tags").innerHTML = '태그 : <span id="placeholder">상단에서 5개의 태그를 선택해주세요</span>';
     document.getElementById("outputArea").innerHTML = " ";
     buttonStatus();
+    outputUpdate();
+    var inputSpan = document.createElement("span");
+    inputSpan.id = "placeholder";
+    inputSpan.innerHTML = "상단에서 5개의 태그를 선택해주세요"; 
+    var tagBody = document.getElementsByClassName("tags")[0];
+    tagBody.appendChild(inputSpan);
 }
 
 function search() {

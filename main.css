@@ -20,7 +20,7 @@ body {
 .language * {
     margin: 8px 12px 9px;
     font-size: 15px;
-    opacity: 80%;
+    opacity: 0.8;
 }
 
 #kr {
@@ -28,7 +28,7 @@ body {
 }
 
 #jp {
-    opacity: 30%;
+    opacity: 0.3;
 }
 
 #mainTitle, #subTitle {
@@ -70,21 +70,29 @@ button {
 }
 .tagTab {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     background-color: #FFFFFF;
     border-radius: 11px;
     margin-top: 15px;
+    padding-left: 12px;
+    padding-top: 10px;
 }
 #placeholder {
-    opacity: 25%;
+    display: block;
+    color: black;
+    opacity: 0.25;
+    padding-bottom: 12px;
 }
-#tags {
-    color: #2E2E2E;
-    padding-left: 12px;
-    font-weight: bolder;
-    margin-top: 12px;
-    margin-bottom: 12px;
+#inputSpan {
+    color: black;
+    border-radius: 8px;
+    padding: 6px 12px 7px;
+    background-color: rgba(0, 0, 0, 10%);
+    margin-right: 12px;
+    box-shadow: none;
+}
 
-}
 #refreshButton {
     font-weight: bold;
     background-color: #FFFFFF;
