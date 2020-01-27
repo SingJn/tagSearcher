@@ -170,7 +170,6 @@ combinationListDB = [];
     }
     combinationListDB = combinationListDB.sort();
 }
-
 makeCondition();
 
 /* make button from combinationListDB */
@@ -186,8 +185,13 @@ function getButtonValue(i) {
     /* 입력 태그 개수가 5개가 되면 검색 함수 실행*/
     if(tagInputCount >= 5) {
         search();
+        document.getElementById("outputArea").style.visibility = "visible";
+        document.getElementById("outputTitle").style.visibility = "visible";
+        document.getEle
     } else {
         document.getElementById("outputArea").innerHTML = "";
+        document.getElementById("outputArea").style.visibility = "hidden";
+        document.getElementById("outputTitle").style.visibility = "hidden";
     }
 }
 
@@ -199,10 +203,23 @@ function outputUpdate() {
     }
     for(i =0; i<tagInput.length; i++) {
         var inputSpan = document.createElement("button");
-        inputSpan.id = "inputSpan";
-        inputSpan.innerHTML = tagInput[i]; 
+        inputSpan.className = "inputSpan";
+        // inputSpan.id = taginput[i];
+        inputSpan.innerHTML = tagInput[i] + "<span id=\"delete\"> X </span>";
         var tagBody = document.getElementsByClassName("tags")[0];
         tagBody.appendChild(inputSpan);
+        inputSpan.addEventListener ("click", function () {
+            document.getElementById("outputArea").style.visibility = "hidden";
+            document.getElementById("outputTitle").style.visibility = "hidden";
+            innerH = this.innerHTML.slice(0, -28);
+            console.log(innerH)
+            getButtonValue(innerH)
+            outputUpdate();
+            buttonStatus();
+            if(tagInputCount == 0) {
+                refresh();
+            }
+        });
         // inputValue = tagInput[i];
         // Result = document.getElementById("tags").innerHTML;
         // document.getElementById("tags").innerHTML = Result + " " + inputSpan;
@@ -216,7 +233,7 @@ function buttonStatus() {
         document.getElementById(combinationListDB[j]).style.boxShadow = "0 2px #0068B8"
     }
     for(i=0; i<tagInput.length; i++) {
-        document.getElementById(tagInput[i]).style.backgroundColor = "#005494"
+        document.getElementById(tagInput[i]).style.backgroundColor = "#082d4a"
         document.getElementById(tagInput[i]).style.boxShadow = "none"
     }
 }
@@ -231,15 +248,14 @@ function makeButton() {
         body.appendChild(tagButton);
         /* 해당 버튼 누를 시, tagInput에 push or splice 그리고 태그 변화 */
         tagButton.addEventListener ("click", function () {
+            document.getElementById("outputArea").style.visibility = "hidden";
+            document.getElementById("outputTitle").style.visibility = "hidden";
             getButtonValue(this.id)
-            /* add tags to Result from tagInput array every button click*/
-            var inputSpan = document.createElement("span");
-            inputSpan.id = "placeholder";
-            inputSpan.innerHTML = "상단에서 5개의 태그를 선택해주세요"; 
-            var tagBody = document.getElementsByClassName("tags")[0];
-            tagBody.appendChild(inputSpan);
             outputUpdate();
             buttonStatus();
+            if(tagInputCount == 0) {
+                refresh();
+            }
         });
     }
 }
@@ -256,7 +272,6 @@ function refresh() {
     }
     tagInput = [];
     tagInputCount = 0;
-    document.getElementById("outputArea").innerHTML = " ";
     buttonStatus();
     outputUpdate();
     var inputSpan = document.createElement("span");
@@ -264,6 +279,9 @@ function refresh() {
     inputSpan.innerHTML = "상단에서 5개의 태그를 선택해주세요"; 
     var tagBody = document.getElementsByClassName("tags")[0];
     tagBody.appendChild(inputSpan);
+    document.getElementById("outputArea").innerHTML = "";
+    document.getElementById("outputArea").style.visibility = "hidden";   
+    document.getElementById("outputTitle").style.visibility = "hidden";
 }
 
 function search() {
