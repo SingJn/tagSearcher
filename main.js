@@ -261,10 +261,10 @@ function makeButton() {
 }
 makeButton();
 
-/* 새로고침버튼 */
-document.getElementById("refreshButton").onclick = function() {
-    refresh();
-}
+// /* 새로고침버튼 */
+// document.getElementById("refreshButton").onclick = function() {
+//     refresh();
+// }
 
 function refresh() {
     while (parent.firstChild) {
@@ -286,8 +286,10 @@ function refresh() {
 
 function search() {
     var tagSearchResult = ""
+    document.getElementById("outputArea").innerHTML = "";
     for (conditionArray in combinationDB) {
         var countCondition = 0;
+        // document.getElementById("outputArea").innerHTML = "";
         for (tag in tagInput) {
             if (combinationDB[conditionArray][countCondition] == tagInput[tag]) {
                 countCondition += 1;
