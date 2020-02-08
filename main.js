@@ -378,6 +378,7 @@ function makeOutputDiv(array) {
     outputResult.innerHTML = array[resultIndex];
     outputResult.style.fontSize = "17px";
     outputResult.style.fontWeight = "bold";
+    outputResult.style.marginRight = "15px"
     var body = document.getElementsByClassName("outputDiv" + arrayIndex)[0];
     body.appendChild(outputResult);
 }
