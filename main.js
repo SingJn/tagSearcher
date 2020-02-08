@@ -57,8 +57,8 @@ var combinationDBkr = [
     ["감속", "근거리", "★4 이상 프로스트리프, 에프이터"],
     ["감속", "딜러", "★4 이상 이스티나, 프로스트리프"],
     ["서포트", "근거리", "★4 이상 도베르만, 지마"],
-    ["경력대원", "★5 확정"],
-    ["고급경력대원", "★6 확정"],
+    ["특별채용", "★5 확정"],
+    ["고급특별채용", "★6 확정"],
     ["신입", "★1~2 확정"]
 ];
 var combinationDBjp = [
@@ -213,11 +213,9 @@ function tagInputCountChecker() {
     if(tagInputCount >= 5) {
         searchWithTags();
         document.getElementById("outputArea").style.visibility = "visible";
-        document.getElementById("outputTitle").style.visibility = "visible";
     } else {
         document.getElementById("outputArea").innerHTML = "";
         document.getElementById("outputArea").style.visibility = "hidden";
-        document.getElementById("outputTitle").style.visibility = "hidden";
     }
     if(tagInputCount >= 1) {
         document.getElementById("refreshButton").style.display = "block";
@@ -239,7 +237,6 @@ function outputUpdate() {
         tagBody.appendChild(inputSpan);
         inputSpan.addEventListener ("click", function () {
             document.getElementById("outputArea").style.visibility = "hidden";
-            document.getElementById("outputTitle").style.visibility = "hidden";
             innerH = this.innerHTML.slice(0, -28);
             inputListMaker(innerH)
             tagInputCountChecker();
@@ -275,7 +272,6 @@ function buttonMaker() {
         /* 해당 버튼 누를 시, tagInput에 push or splice 그리고 태그 변화 */
         tagButton.addEventListener ("click", function () {
             document.getElementById("outputArea").style.visibility = "hidden";
-            document.getElementById("outputTitle").style.visibility = "hidden";
             inputListMaker(this.id);
             tagInputCountChecker();
             outputUpdate();
@@ -303,8 +299,7 @@ function refresh() {
     var tagBody = document.getElementsByClassName("tags")[0];
     tagBody.appendChild(inputSpan);
     document.getElementById("outputArea").innerHTML = "";
-    document.getElementById("outputArea").style.visibility = "hidden";   
-    document.getElementById("outputTitle").style.visibility = "hidden";
+    document.getElementById("outputArea").style.visibility = "hidden";
     document.getElementById("refreshButton").style.display = "none";
 }
 
@@ -323,16 +318,14 @@ function searchWithTags() {
                 countCondition += 1;
                 if (countCondition + 1 == combinationDB[conditionArray].length) {
                     tagSearchResult = combinationDB[conditionArray];
-                    outputText = document.getElementById("outputArea").innerHTML;
-                    document.getElementById("outputArea").innerHTML = outputText + tagSearchResult + "<br /><br />";
+                    makeOutputDiv(tagSearchResult);
                 }
                 for (tag in tagInput) {
                     if (combinationDB[conditionArray][countCondition] == tagInput[tag]) {
                         countCondition += 1;
                         if (countCondition + 1 == combinationDB[conditionArray].length) {
                             tagSearchResult = combinationDB[conditionArray];
-                            outputText = document.getElementById("outputArea").innerHTML;
-                            document.getElementById("outputArea").innerHTML = outputText + tagSearchResult + "<br /><br />";
+                            makeOutputDiv(tagSearchResult);
                         }
                     }
                 }
@@ -342,4 +335,49 @@ function searchWithTags() {
     if (tagSearchResult == "") {
         document.getElementById("outputArea").innerHTML = "쟌넨";
     }
+}
+
+function makeOutputDiv(array) {
+    var arrayIndex = combinationDB.indexOf(array);
+
+    /* 껍데기 만들기*/
+    var outputDiv = document.createElement("div");
+    outputDiv.className = "outputDiv" + arrayIndex;
+    outputDiv.style.display = "flex";
+    outputDiv.style.backgroundColor = "rgba(255, 255, 255, 0.05)";
+    outputDiv.style.borderRadius = "11px";
+    outputDiv.style.paddingTop = "12px";
+    outputDiv.style.paddingBottom = "12px";
+    outputDiv.style.flexDirection = "column";
+    outputDiv.style.textAlign = "left";
+    outputDiv.style.paddingLeft = "15px"
+    outputDiv.style.marginBottom = "12px"
+    var body = document.getElementById("outputArea");
+    body.appendChild(outputDiv);
+
+    var CondDiv = document.createElement("div");
+    CondDiv.className = "CondDiv" + arrayIndex;
+    var body = document.getElementsByClassName("outputDiv" + arrayIndex)[0];
+    body.appendChild(CondDiv);
+
+    /* 조건(제목) 넣어주기 */
+    for(i=0; i<array.length-1; i++) {
+        var outputCond = document.createElement("span");
+        outputCond.className = ("outputCond" + arrayIndex);
+        outputCond.innerHTML = array[i];
+        outputCond.style.paddingRight = "8px";
+        outputCond.style.opacity = "0.6";
+        var body = document.getElementsByClassName("CondDiv" + arrayIndex)[0];
+        body.appendChild(outputCond);
+    }
+
+    /* 결과(내용) 넣어주기 */
+    var outputResult = document.createElement("span");
+    outputResult.className = ("outputResult" + arrayIndex);
+    resultIndex = array.length-1;
+    outputResult.innerHTML = array[resultIndex];
+    outputResult.style.fontSize = "17px";
+    outputResult.style.fontWeight = "bold";
+    var body = document.getElementsByClassName("outputDiv" + arrayIndex)[0];
+    body.appendChild(outputResult);
 }

@@ -109,7 +109,7 @@ button {
     font-weight: bold;
     background-color: rgb(53, 53, 53);
     padding: 7px 11px 7px;
-    margin-bottom: 5px;
+    margin-bottom: 9px;
     border-radius: 11px;
     display: none;
 }
@@ -139,13 +139,11 @@ button {
 
 #outputArea {
     display: flex;
+    flex-direction: column;
     border-radius: 11px;
     border: none;
     justify-content: center;
-    padding: 12px;
+    padding-top: 12px;
     margin-top: 9px;
 }
 
-#unrandom {
-    color: salmon;
-}
