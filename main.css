@@ -68,27 +68,52 @@ button {
 .input {
     text-align: center;
 }
+
+.tagTab {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: #FFFFFF;
+    border-radius: 11px;
+    margin-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 9px;
+}
+
 .tags {
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
 }
-.tagTab {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    background-color: #FFFFFF;
-    border-radius: 11px;
-    margin-top: 15px;
-    padding-left: 12px;
-    padding-top: 9px;
-}
+
 #placeholder {
-    display: block;
+    font-size: 15px;
+    widows: 100%;
+    display: flex;
     color: black;
     opacity: 0.25;
-    padding-bottom: 12px;
+    padding-top: 4px;
+    padding-bottom: 16px;
+    margin: auto;
+    height: 20.4px;
 }
+
+.refreshTab {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#refreshButton {
+    color: #FFFFFF;
+    font-weight: bold;
+    background-color: rgb(53, 53, 53);
+    padding: 7px 11px 7px;
+    margin-bottom: 5px;
+    border-radius: 11px;
+    display: none;
+}
+
 .inputSpan {
     color: black;
     border-radius: 8px;
@@ -100,19 +125,7 @@ button {
 #delete {
     opacity: 0.3;
 }
-.refreshTab {
-    display: flex;
-    justify-content: flex-end;
-}
 
-#refreshButton {
-    font-weight: bold;
-    background-color: #FAFAFA;
-    color: #0A84FF;
-    box-shadow: 0 2px #C5C5C5;
-    margin: 0;
-    margin-top: 12px;
-}
 .output {
     text-align: center;
 }

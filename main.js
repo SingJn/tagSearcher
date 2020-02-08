@@ -124,10 +124,13 @@ var combinationDBjp = [
     ["上級エリート", "★6 확정"],
     ["初期", "★1~2 확정"]
 ];
-
+/* default DB로 kr 적용*/
 var combinationDB = combinationDBkr;
+var languageList = ["jp", "kr"];
 var combinationListDB = [];
+/* tag 선택시 저장할 배열 */
 var tagInput = [];
+/* 태그를 몇 개 선택했는지 저장하는 변수 */
 var tagInputCount = 0;
 
 /* 언어선택 */
@@ -140,8 +143,8 @@ document.getElementById("kr").onclick = function() {
     document.getElementById("kr").style.opacity = "0.8";
     document.getElementById("jp").style.fontWeight = "400";
     document.getElementById("jp").style.opacity = "0.3";
-    makeCondition();
-    makeButton();
+    conditionArrayMaker();
+    buttonMaker();
     refresh();
 };
 document.getElementById("jp").onclick = function() {
@@ -153,13 +156,35 @@ document.getElementById("jp").onclick = function() {
     document.getElementById("jp").style.opacity = "0.8";
     document.getElementById("kr").style.fontWeight = "400";
     document.getElementById("kr").style.opacity = "0.3";
-    makeCondition();
-    makeButton();
+    conditionArrayMaker();
+    buttonMaker();
     refresh();
 };
 
+function languageSelecter() {
+    for(i=0; i<languageList; i++) {
+        document.getElementById(languageList[i]).onclick = function() {
+            for(i=0; i<combinationListDB.length; i++) {
+                document.getElementById(combinationListDB[i]).remove();
+            }
+            combinationDB = combinationDBkr; /* 동적변수명을 사용하여 지정할것  combinationDB + lagnuageList[i]*/
+            document.getElementById(languageList[i]).style.fontWeight = "bold";
+            document.getElementById(languageList[i]).style.opacity = "0.8";
+            for(j=0; j<languageList; j++) {
+                if(i != j ) {
+                    document.getElementById(languageList[j]).style.fontWeight = "400";
+                    document.getElementById(languageList[j]).style.opacity = "0.3";
+                }
+            }    
+            conditionArrayMaker();
+            buttonMaker();
+            refresh();
+        };
+    }
+}
+
 /* make condition array 그리고 가나다순 정렬*/
-function makeCondition() {
+function conditionArrayMaker() {
 combinationListDB = [];
     for (i=0; i<combinationDB.length; i++) {
         for (j=0; j<combinationDB[i].length-1; j++) {
@@ -170,11 +195,10 @@ combinationListDB = [];
     }
     combinationListDB = combinationListDB.sort();
 }
-makeCondition();
+conditionArrayMaker();
 
-/* make button from combinationListDB */
 /* 입력 태그 개수 추가 */
-function getButtonValue(i) {
+function inputListMaker(i) {
     if(tagInput.indexOf(i) == -1) {
         tagInput.push(i);
         tagInputCount += 1;
@@ -182,16 +206,21 @@ function getButtonValue(i) {
         tagInput.splice(tagInput.indexOf(i), 1);
         tagInputCount -= 1;
     }
+}
+
+function tagInputCountChecker() {
     /* 입력 태그 개수가 5개가 되면 검색 함수 실행*/
     if(tagInputCount >= 5) {
-        search();
+        searchWithTags();
         document.getElementById("outputArea").style.visibility = "visible";
         document.getElementById("outputTitle").style.visibility = "visible";
-        document.getEle
     } else {
         document.getElementById("outputArea").innerHTML = "";
         document.getElementById("outputArea").style.visibility = "hidden";
         document.getElementById("outputTitle").style.visibility = "hidden";
+    }
+    if(tagInputCount >= 1) {
+        document.getElementById("refreshButton").style.display = "block";
     }
 }
 
@@ -212,22 +241,19 @@ function outputUpdate() {
             document.getElementById("outputArea").style.visibility = "hidden";
             document.getElementById("outputTitle").style.visibility = "hidden";
             innerH = this.innerHTML.slice(0, -28);
-            console.log(innerH)
-            getButtonValue(innerH)
+            inputListMaker(innerH)
+            tagInputCountChecker();
             outputUpdate();
-            buttonStatus();
+            buttonStatusChanger();
             if(tagInputCount == 0) {
                 refresh();
             }
         });
-        // inputValue = tagInput[i];
-        // Result = document.getElementById("tags").innerHTML;
-        // document.getElementById("tags").innerHTML = Result + " " + inputSpan;
     }
 }
 
 /* 버튼 활성화, 비활성화 */
-function buttonStatus() {
+function buttonStatusChanger() {
     for(j=0; j<combinationListDB.length; j++) {
         document.getElementById(combinationListDB[j]).style.backgroundColor = "#0A84FF"
         document.getElementById(combinationListDB[j]).style.boxShadow = "0 2px #0068B8"
@@ -238,7 +264,7 @@ function buttonStatus() {
     }
 }
 /* 버튼 만들기 */
-function makeButton() {
+function buttonMaker() {
     for (i=0; i<combinationListDB.length; i++) {
         /* combinationListDB의 요소를 id로 가진 버튼 만들기 */
         var tagButton = document.createElement("button");
@@ -250,21 +276,18 @@ function makeButton() {
         tagButton.addEventListener ("click", function () {
             document.getElementById("outputArea").style.visibility = "hidden";
             document.getElementById("outputTitle").style.visibility = "hidden";
-            getButtonValue(this.id)
+            inputListMaker(this.id);
+            tagInputCountChecker();
             outputUpdate();
-            buttonStatus();
+            buttonStatusChanger();
             if(tagInputCount == 0) {
                 refresh();
             }
         });
     }
 }
-makeButton();
+buttonMaker();
 
-// /* 새로고침버튼 */
-// document.getElementById("refreshButton").onclick = function() {
-//     refresh();
-// }
 
 function refresh() {
     while (parent.firstChild) {
@@ -272,7 +295,7 @@ function refresh() {
     }
     tagInput = [];
     tagInputCount = 0;
-    buttonStatus();
+    buttonStatusChanger();
     outputUpdate();
     var inputSpan = document.createElement("span");
     inputSpan.id = "placeholder";
@@ -282,9 +305,14 @@ function refresh() {
     document.getElementById("outputArea").innerHTML = "";
     document.getElementById("outputArea").style.visibility = "hidden";   
     document.getElementById("outputTitle").style.visibility = "hidden";
+    document.getElementById("refreshButton").style.display = "none";
 }
 
-function search() {
+document.getElementById("refreshButton").onclick = function() {
+    refresh();
+};
+
+function searchWithTags() {
     var tagSearchResult = ""
     document.getElementById("outputArea").innerHTML = "";
     for (conditionArray in combinationDB) {
