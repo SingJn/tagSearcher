@@ -59,7 +59,8 @@ var combinationDBkr = [
     ["서포트", "근거리", "★4 이상 도베르만, 지마"],
     ["특별채용", "★5 확정"],
     ["고급특별채용", "★6 확정"],
-    ["신입", "★1~2 확정"]
+    ["신입", "★1~2 확정"],
+    ["로봇", "★1 Lancet-2"]
 ];
 var combinationDBjp = [
     ["先鋒タイプ", "支援", "★5 지마"],
@@ -122,7 +123,8 @@ var combinationDBjp = [
     ["支援", "近距離", "★4 이상 도베르만, 지마"],
     ["エリート", "★5 확정"],
     ["上級エリート", "★6 확정"],
-    ["初期", "★1~2 확정"]
+    ["初期", "★1~2 확정"],
+    ["ロボット", "★1 Lancet-2"]
 ];
 /* default DB로 kr 적용*/
 var combinationDB = combinationDBkr;
@@ -351,6 +353,7 @@ function makeOutputDiv(array) {
     outputDiv.style.flexDirection = "column";
     outputDiv.style.textAlign = "left";
     outputDiv.style.paddingLeft = "15px"
+    outputDiv.style.paddingRight = "15px"
     outputDiv.style.marginBottom = "12px"
     var body = document.getElementById("outputArea");
     body.appendChild(outputDiv);
@@ -378,7 +381,6 @@ function makeOutputDiv(array) {
     outputResult.innerHTML = array[resultIndex];
     outputResult.style.fontSize = "17px";
     outputResult.style.fontWeight = "bold";
-    outputResult.style.marginRight = "15px"
     var body = document.getElementsByClassName("outputDiv" + arrayIndex)[0];
     body.appendChild(outputResult);
 }
