@@ -242,7 +242,7 @@ function inputListMaker(i) {
 
 function tagInputCountChecker() {
     /* 입력 태그 개수가 5개가 되면 검색 함수 실행*/
-    if(tagInputCount >= 5) {
+    if(tagInputCount >= 1) {
         searchWithTags();
         document.getElementById("outputArea").style.visibility = "visible";
     } else {
