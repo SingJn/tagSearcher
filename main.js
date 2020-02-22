@@ -1,96 +1,77 @@
-var combinationDBkr = [
-    ["서포터", "★5 프라마닉스, 이스티나, 메이어 ★4 어스스피릿"],
-    ["신입", "★2 확정"],
-    ["특별채용", "★5 확정"],
-    ["고급특별채용", "★6 시즈, 샤이닝, 나이팅게일, 이프리트, 엑시아, 실버애쉬, 호시구마, 사리아, 스카디"],
-    ["강제이동", "★5 클리프하트, 에프이터, 크루아상 ★4 로프, 쇼"],
-    ["서포트", "★5 지마, 프틸롭시스, 와파린 ★4 도베르만"],
-    ["디버프", "★5 메테오리테, 프라마닉스 ★4 헤이즈, 메테오"],
-    ["스페셜리스트", "★5 레드, 만티코어, 클리프하트, 에프이터 ★4 쇼, 로프, 그라벨"],
-    ["소환", "★5 메이어"],
-    ["로봇", "★1 Lancet-2, Castle-3"],
-    ["누커", "★5 파이어워치"],
-    ["뱅가드", "서포트", "★5 지마"],
-    ["코스트+", "서포트", "★5 지마"],
-    ["뱅가드", "제어형", "★5 텍서스"],
-    ["코스트+", "제어형", "★5 텍서스"],
-    ["범위공격", "디버프", "★5 메테오리테"],
-    ["스페셜리스트", "강제이동", "★5 클리프하트, 에프이터 ★4 로프, 쇼"],
-    ["메딕", "서포트", "★5 프틸롭시스, 와파린"],
-    ["서포트", "힐링", "★5 프틸롭시스, 와파린"],
-    ["서포트", "원거리", "★5 프틸롭시스, 와파린"],
-    ["가드", "생존형", "★5 스펙터, 인드라"],
-    ["디펜더", "생존형", "★5 불칸"],
-    ["방어형", "생존형", "★5 불칸"],
-    ["방어형", "딜러", "★5 불칸, 리스캄"],
-    ["디펜더", "강제이동", "★5 크루아상"],
-    ["방어형", "강제이동", "★5 크루아상"],
-    ["디버프", "서포터", "★5 프라마닉스"],
-    ["딜러", "서포터", "★5 이스티나"],
-    ["서포터" ,"제어형", "★5 메이어"],
-    ["원거리", "제어형", "★5 메이어"],
-    ["제어형", "쾌속부활", "★5 레드"],
-    ["제어형", "스페셜리스트", "★5 레드"],
-    ["스페셜리스트", "딜러", "★5 만티코어, 클리프하트"],
-    ["스페셜리스트", "생존형", "★5 만티코어, 클리프하트"],
-    ["스페셜리스트", "감속", "★5 에프이터"],
-    ["감속", "강제이동", "★5 에포이터"],
-    ["강제이동", "딜러", "★5 클리프하트"],
-    ["제어형", "★5 레드, 텍사스, 메이어"],
-    ["제어형", "근거리", "★5 텍사스, 레드"],
-    ["범위공격", "스나이퍼", "★5 메테오리테 ★4 시라유키"],
-    ["범위공격", "감속", "★4 시라유키"],
-    ["생존형", "스나이퍼", "★4 제시카"],
-    ["생존형", "원거리", "★4 제시카"],
-    ["디버프", "스나이퍼", "★5 메테오리테, ★4 메테오"],
-    ["디버프", "캐스터", "★4 헤이즈"],
-    ["서포트", "가드", "★4 도베르만"],
-    ["서포트", "딜러" ,"★4 도베르만"],
-    ["범위공격", "가드", "★5 스펙터 ★4 에스텔"],
-    ["범위공격", "생존형", "★5 스펙터 ★4 에스텔"],
-    ["범위공격", "근거리", "★5 스펙터 ★4 에스텔"],
-    ["감속", "가드", "★4 프로스트리프"],
-    ["힐링", "방어형", "★4 니어, 굼"],
-    ["힐링", "디펜더", "★4 니어, 굼"],
-    ["힐링", "근거리", "★4 니어, 굼"],
-    ["방어형", "남성대원", "★4 마터호른"],
-    ["남성대원", "디펜더", "★4 마터호른"],
-    ["남성대원", "근거리", "★4 마터호른"],
-    ["쾌속부활", "★5 레드 ★4 그라벨"],
-    ["스페셜리스트", "방어형", "★4 그라벨"],
-    ["쾌속부활", "방어형", "★4 그라벨"],
-    ["디버프", "딜러", "★4 헤이즈, 메테오"],
-    ["감속", "근거리", "★5 에프이터 ★4 프로스트리프"],
-    ["감속", "딜러", "★5 이스티나 ★4 프로스트리프"],
-    ["서포트", "근거리", "★5 지마 ★4 도베르만"],
-    ["로봇", "원거리", "★1 Lancet-2"],
-    ["로봇", "힐링", "★1 Lancet-2"],
-    ["로봇", "근거리", "★1 Castle-3"],
-    ["로봇", "가드", "★1 Castle-3"],
-    ["고급특별채용", "근거리", "★6 시즈, 실버애쉬, 호시구마, 사리아"],
-    ["고급특별채용", "원거리", "★6 샤이닝, 나이팅게일, 이프리트, 엑시아"],
-    ["고급특별채용", "디펜더", "★6 호시구마, 사리아"],
-    ["고급특별채용", "힐링", "★6 샤이닝, 나이팅게일, 사리아"],
-    ["고급특별채용", "캐스터", "★6 이프리트"],
-    ["고급특별채용", "범위공격", "★6 이프리트"],
-    ["고급특별채용", "디버프", "★6 이프리트"],
-    ["고급특별채용", "메딕", "★6 샤이닝, 나이팅게일"],
-    ["고급특별채용", "원거리", "힐링", "★6 샤이닝, 나이팅게일"],
-    ["고급특별채용", "원거리", "서포트", "★6 샤이닝, 나이팅게일"],
-    ["고급특별채용", "원거리", "딜러", "★6 엑시아"],
-    ["고급특별채용", "스나이퍼", "★6 엑시아"],
-    ["고급특별채용", "디펜더", "힐링", "★6 사리아"],
-    ["고급특별채용", "디펜더", "서포트", "★6 사리아"],
-    ["고급특별채용", "방어형", "서포트", "★6 사리아"],
-    ["고급특별채용", "방어형", "힐링", "★6 사리아"],
-    ["고급특별채용", "디펜더", "딜러", "★6 호시구마"],
-    ["고급특별채용", "방어형", "딜러", "★6 사리아"],
-    ["고급특별채용", "딜러", "서포트", "★6 실버애쉬"],
-    ["고급특별채용", "가드", "★6 실버애쉬, 스카디"],
-    ["고급특별채용", "남성대원", "★6 실버애쉬"],
-    ["고급특별채용", "코스트+", "★6 시즈"],
-    ["고급특별채용", "뱅가드", "★6 시즈"],
-    ["고급특별채용", "생존형" ,"★6 스카디"]
+
+/* 맨뒤 숫자는 2 = 6성 1 = 5성, 0 = 1~4성 */
+let combinationDBkr = [
+    ["6", "시즈", ["뱅가드", "근거리", "코스트+", "딜러", "고급특별채용"]],
+    ["6", "샤이닝", ["메딕", "원거리", "서포트", "힐링", "고급특별채용"]],
+    ["6", "나이팅게일", ["메딕", "원거리", "힐링", "서포트", "고급특별채용"]],
+    ["6", "이프리트", ["캐스터", "원거리", "범위공격", "디버프", "고급특별채용"]],
+    ["6", "엑시아", ["스나이퍼", "원거리", "딜러", "고급특별채용"]],
+    ["6", "실버애쉬", ["가드", "근거리", "딜러", "서포트", "고급특별채용"]],
+    ["6", "호시구마", ["디펜더", "근거리", "딜러", "방어형", "고급특별채용"]],
+    ["6", "사리아", ["디펜더", "근거리", "서포트", "방어형", "힐링", "고급특별채용"]],
+    ["5", "텍사스", ["뱅가드", "제어형", "근거리", "코스트+", "특별채용"]],
+    ["5", "지마", ["뱅가드", "서포트", "근거리", "코스트+", "특별채용"]],
+    ["5", "프틸롭시스", ["메딕", "원거리", "힐링", "서포트", "특별채용"]],
+    ["5", "사일런스", ["메딕", "원거리", "힐링", "특별채용"]],
+    ["5", "와파린", ["메딕", "원거리", "힐링", "서포트", "특별채용"]],
+    ["5", "레드", ["스페셜리스트", "근거리", "제어형", "쾌속부활", "특별채용"]],
+    ["5", "맨티코어", ["스페셜리스트", "생존형", "근거리", "딜러", "특별채용"]],
+    ["5", "클리프하트", ["스페셜리스트", "딜러", "근거리", "강제이동", "특별채용"]],
+    ["5", "에프이터", ["스페셜리스트", "감속", "근거리", "강제이동", "특별채용"]],
+    ["5", "프로방스", ["스나이퍼", "원거리", "딜러", "특별채용"]],
+    ["5", "블루포이즌", ["스나이퍼", "원거리", "딜러", "특별채용"]],
+    ["5", "파이어워치", ["스나이퍼", "원거리", "딜러", "누커", "특별채용"]],
+    ["5", "메테오라이트", ["스나이퍼", "원거리", "범위공격", "디버프", "특별채용"]],
+    ["5", "플래티넘", ["스나이퍼", "원거리", "딜러", "특별채용"]],
+    ["5", "프라마닉스", ["서포터", "원거리", "디버프", "특별채용"]],
+    ["5", "이스티나", ["서포터", "원거리", "감속", "딜러", "특별채용"]],
+    ["5", "메이어", ["서포터", "원거리", "소환", "제어형", "특별채용"]],
+    ["5", "스펙터", ["가드", "근거리", "범위공격", "생존형", "특별채용"]],
+    ["5", "인드라", ["가드", "근거리", "딜러", "생존형", "특별채용"]],
+    ["5", "니어", ["디펜더", "근거리", "방어형", "힐링", "특별채용"]],
+    ["5", "리스캄", ["디펜더", "근거리", "방어형", "딜러", "특별채용"]],
+    ["5", "벌컨", ["디펜더", "근거리", "딜러", "방어형", "생존형", "특별채용"]],
+    ["5", "크루아상", ["디펜더", "근거리", "강제이동", "방어형", "특별채용"]],
+    ["4", "스캐빈저", ["뱅가드", "근거리", "코스트+", "딜러"]],
+    ["4", "비그나", ["뱅가드", "근거리", "딜러", "코스트+"]],
+    ["4", "미르", ["메딕", "원거리", "힐링"]],
+    ["4", "퍼퓨머", ["메딕", "원거리", "힐링"]],
+    ["4", "헤이즈", ["캐스터", "디버프", "원거리", "딜러"]],
+    ["4", "기타노", ["캐스터", "원거리", "범위공격"]],
+    ["4", "그라벨", ["스페셜리스트", "근거리", "쾌속부활", "방어형"]],
+    ["4", "로프", ["스페셜리스트", "근거리", "강제이동"]],
+    ["4", "쇼", ["스페셜리스트", "근거리", "강제이동"]],
+    ["4", "시라유키", ["스나이퍼", "원거리", "범위공격", "감속"]],
+    ["4", "메테오", ["스나이퍼", "원거리", "딜러", "디버프"]],
+    ["4", "제시카", ["스나이퍼", "원거리", "딜러", "생존형"]],
+    ["4", "어스스피릿", ["서포터", "원거리", "감속"]],
+    ["4", "도베르만", ["가드", "근거리", "서포트", "딜러"]],
+    ["4", "에스텔", ["가드", "근거리", "범위공격", "생존형"]],
+    ["4", "무스", ["가드", "근거리", "딜러"]],
+    ["4", "프로스트리프", ["가드", "근거리", "감속", "딜러"]],
+    ["4", "마토이마루", ["가드", "딜러", "근거리", "생존형"]],
+    ["4", "쿠오라", ["디펜더", "근거리", "방어형"]],
+    ["4", "굼", ["디펜더", "근거리", "방어형", "힐링"]],
+    ["4", "마터호른", ["디펜더", "근거리", "방어형"]],
+    ["3", "팽", ["뱅가드", "근거리", "코스트+"]],
+    ["3", "바닐라", ["뱅가드", "근거리", "코스트+"]],
+    ["3", "플룸", ["뱅가드", "근거리", "딜러", "코스트+"]],
+    ["3", "히비스커스", ["메딕", "원거리", "힐링"]],
+    ["3", "안셀", ["메딕", "원거리", "힐링"]],
+    ["3", "라바", ["캐스터", "원거리", "범위공격"]],
+    ["3", "스튜어드", ["캐스터", "원거리", "딜러"]],
+    ["3", "크루스", ["스나이퍼", "원거리", "딜러"]],
+    ["3", "아드나키엘", ["스나이퍼", "원거리", "딜러"]],
+    ["3", "오키드", ["서포터", "원거리", "감속"]],
+    ["3", "멜란사", ["가드", "근거리", "딜러", "생존형"]],
+    ["3", "비글", ["디펜더", "근거리", "방어형"]],
+    ["2", "야토", ["뱅가드", "근거리", "신입"]],
+    ["2", "듀린", ["캐스터", "원거리", "신입"]],
+    ["2", "12F", ["캐스터", "원거리", "신입"]],
+    ["2", "레인저", ["스나이퍼", "원거리", "신입"]],
+    ["2", "느와르", ["디펜더", "근거리", "신입"]],
+    ["1", "Lancet-2", ["메딕", "원거리", "힐링", "로봇"]],
+    ["1", "Castle-3", ["가드", "근거리", "서포트", "로봇"]]
 ];
 var combinationDBjp = [
     ["先鋒タイプ", "支援", "★5 지마"],
@@ -156,6 +137,14 @@ var combinationDBjp = [
     ["初期", "★2 확정"],
     ["ロボット", "★1 Lancet-2"]
 ];
+var resultArray = [];
+var array1 = [[]];
+var array2 = [];
+var array3 = [];
+var array4 = [];
+var array5 = [];
+var array6 = [];
+
 /* default DB로 kr 적용*/
 var combinationDB = combinationDBkr;
 var languageList = ["jp", "kr"];
@@ -219,15 +208,15 @@ function languageSelecter() {
 function conditionArrayMaker() {
 combinationListDB = [];
     for (i=0; i<combinationDB.length; i++) {
-        for (j=0; j<combinationDB[i].length-1; j++) {
-            if (combinationListDB.indexOf(combinationDB[i][j]) == -1) {
-                combinationListDB.push(combinationDB[i][j]);
+        for (j=0; j<combinationDB[i][2].length; j++) {
+            if (combinationListDB.indexOf(combinationDB[i][2][j]) == -1) {
+                combinationListDB.push(combinationDB[i][2][j]);
             }
         }
     }
     combinationListDB = combinationListDB.sort();
 }
-conditionArrayMaker();
+conditionArrayMaker();//801
 
 /* 입력 태그 개수 추가 */
 function inputListMaker(i) {
@@ -242,7 +231,7 @@ function inputListMaker(i) {
 
 function tagInputCountChecker() {
     /* 입력 태그 개수가 5개가 되면 검색 함수 실행*/
-    if(tagInputCount >= 5) {
+    if(tagInputCount >= 1) {
         searchWithTags();
         document.getElementById("outputArea").style.visibility = "visible";
     } else {
@@ -339,78 +328,189 @@ document.getElementById("refreshButton").onclick = function() {
     refresh();
 };
 
+// input 태그로 combinationDB와 비교 실행
 function searchWithTags() {
-    var tagSearchResult = ""
+    sameTagArray = [];
+    resultArray = [];
     document.getElementById("outputArea").innerHTML = "";
-    for (conditionArray in combinationDB) {
-        var countCondition = 0;
-        // document.getElementById("outputArea").innerHTML = "";
+    for (j in combinationDB) {
+        var flag = 1;
+        var tArray = [[], []];
         for (tag in tagInput) {
-            if (combinationDB[conditionArray][countCondition] == tagInput[tag]) {
-                countCondition += 1;
-                if (countCondition + 1 == combinationDB[conditionArray].length) {
-                    tagSearchResult = combinationDB[conditionArray];
-                    makeOutputDiv(tagSearchResult);
-                }
-                for (tag in tagInput) {
-                    if (combinationDB[conditionArray][countCondition] == tagInput[tag]) {
-                        countCondition += 1;
-                        if (countCondition + 1 == combinationDB[conditionArray].length) {
-                            tagSearchResult = combinationDB[conditionArray];
-                            makeOutputDiv(tagSearchResult);
-                        }
+            var conditionArray = combinationDB[j];
+            for (i=0; i<conditionArray[2].length; i++) {
+                var charStar = conditionArray[0];
+                var charName = conditionArray[1];
+                var tagInDB = conditionArray[2][i];
+                if (tagInDB == tagInput[tag]) {
+                    if(sameTagArray.indexOf(tagInput[tag]) == -1) {
+                        sameTagArray.push(tagInput[tag]);
+                    }
+                    if(flag) {
+                        tArray[0].push(charStar);
+                        tArray[0].push(charName);
+                        tArray[1].push(tagInDB);
+                        flag = 0;
+                    } else {
+                        tArray[1].push(tagInDB)
                     }
                 }
             }
         }
+        if(!flag) {
+            if(!(tArray[0][0] == 6 && tArray[1].indexOf("고급특별채용") == -1)) {
+                resultArray.push(tArray);
+            }
+        }
     }
-    if (tagSearchResult == "") {
-        document.getElementById("outputArea").innerHTML = "쟌넨";
+    var mixArray = [];
+        switch(sameTagArray.length) {
+            case 5:
+                for(g = 0; g < sameTagArray.length-4; g++) {
+                    for(h = g+1; h < sameTagArray.length-3; h++) {
+                        for (k = h+1; k < sameTagArray.length-2; k++) {
+                            for (i = k+1; i < sameTagArray.length-1; i++) {
+                                for (j = i+1; j < sameTagArray.length; j++) {
+                                    var buffer = [[]];
+                                    buffer[0].push(sameTagArray[g]);
+                                    buffer[0].push(sameTagArray[h]);
+                                    buffer[0].push(sameTagArray[k]);
+                                    buffer[0].push(sameTagArray[i]);
+                                    buffer[0].push(sameTagArray[j]);
+                                    mixArray.push(buffer[0]);
+                                }
+                            }
+                        }
+                    }    
+                }
+            case 4:
+                for(h = 0; h < sameTagArray.length-3; h++) {
+                    for (k = h+1; k < sameTagArray.length-2; k++) {
+                        for (i = k+1; i < sameTagArray.length-1; i++) {
+                            for (j = i+1; j < sameTagArray.length; j++) {
+                                var buffer = [[]];
+                                buffer[0].push(sameTagArray[h]);
+                                buffer[0].push(sameTagArray[k]);
+                                buffer[0].push(sameTagArray[i]);
+                                buffer[0].push(sameTagArray[j]);
+                                mixArray.push(buffer[0]);
+                            }
+                        }
+                    }
+                } 
+            case 3:
+                for (k = 0; k < sameTagArray.length-2; k++) {
+                    for (i = k+1; i < sameTagArray.length-1; i++) {
+                        for (j = i+1; j < sameTagArray.length; j++) {
+                            var buffer = [[]];
+                            buffer[0].push(sameTagArray[k]);
+                            buffer[0].push(sameTagArray[i]);
+                            buffer[0].push(sameTagArray[j]);
+                            mixArray.push(buffer[0]);
+                        }
+                    }
+                }
+            case 2:
+                for (i = 0; i < sameTagArray.length-1; i++) {
+                    for (j = i+1; j < sameTagArray.length; j++) {
+                        var buffer = [[]];
+                        buffer[0].push(sameTagArray[i]);
+                        buffer[0].push(sameTagArray[j]);
+                        mixArray.push(buffer[0]);
+                    }
+                }
+            case 1:
+                //1
+                for (i in sameTagArray) {
+                    var buffer = [[]];
+                    buffer[0].push(sameTagArray[i]);
+                    mixArray.push(buffer[0]);
+                }
+            case 0:
+                //쟌넨
+        }
+
+    var mixArray3 = [];
+    for(i in mixArray) {
+        var flag2 = 0;
+        var buffer = [[]];
+        var mixArray2 = [[]];
+        for(j in resultArray) {
+            for(l in mixArray[i]) {
+                if(resultArray[j][1].indexOf(mixArray[i][l]) == -1) {
+                    break;
+                }
+                if(mixArray[i].length == Number(l)+1) {
+                    buffer[0].push(resultArray[j][0][1]);
+                    flag2 += 1;
+                } 
+            }
+        }
+        if(flag2) {
+            mixArray2[0].push(mixArray[i]);
+            mixArray2[0].push(buffer[0]);
+            mixArray3.push(mixArray2[0]);
+        }
+
     }
+    /* 태그 별로 묶는 거 필요함*/
+    /* 정렬 필요함 */
+    makeOutputDiv(mixArray3);
 }
 
 function makeOutputDiv(array) {
-    var arrayIndex = combinationDB.indexOf(array);
+    for(i in array) {
+        var arrayIndex = i;
 
-    /* 껍데기 만들기*/
-    var outputDiv = document.createElement("div");
-    outputDiv.className = "outputDiv" + arrayIndex;
-    outputDiv.style.display = "flex";
-    outputDiv.style.backgroundColor = "rgba(255, 255, 255, 0.05)";
-    outputDiv.style.borderRadius = "11px";
-    outputDiv.style.paddingTop = "12px";
-    outputDiv.style.paddingBottom = "12px";
-    outputDiv.style.flexDirection = "column";
-    outputDiv.style.textAlign = "left";
-    outputDiv.style.paddingLeft = "15px"
-    outputDiv.style.paddingRight = "15px"
-    outputDiv.style.marginBottom = "12px"
-    var body = document.getElementById("outputArea");
-    body.appendChild(outputDiv);
+        /* 껍데기 만들기*/
+        var outputDiv = document.createElement("div");
+        outputDiv.className = "outputDiv" + arrayIndex;
+        outputDiv.style.display = "flex";
+        outputDiv.style.backgroundColor = "rgba(255, 255, 255, 0.05)";
+        outputDiv.style.borderRadius = "11px";
+        outputDiv.style.paddingTop = "12px";
+        outputDiv.style.paddingBottom = "12px";
+        outputDiv.style.flexDirection = "column";
+        outputDiv.style.textAlign = "left";
+        outputDiv.style.paddingLeft = "15px"
+        outputDiv.style.paddingRight = "15px"
+        outputDiv.style.marginBottom = "12px"
+        var body = document.getElementById("outputArea");
+        body.appendChild(outputDiv);
 
-    var CondDiv = document.createElement("div");
-    CondDiv.className = "CondDiv" + arrayIndex;
-    var body = document.getElementsByClassName("outputDiv" + arrayIndex)[0];
-    body.appendChild(CondDiv);
+        var CondDiv = document.createElement("div");
+        CondDiv.className = "CondDiv" + arrayIndex;
+        var body = document.getElementsByClassName("outputDiv" + arrayIndex)[0];
+        body.appendChild(CondDiv);
 
-    /* 조건(제목) 넣어주기 */
-    for(i=0; i<array.length-1; i++) {
-        var outputCond = document.createElement("span");
-        outputCond.className = ("outputCond" + arrayIndex);
-        outputCond.innerHTML = array[i];
-        outputCond.style.paddingRight = "8px";
-        outputCond.style.opacity = "0.6";
-        var body = document.getElementsByClassName("CondDiv" + arrayIndex)[0];
-        body.appendChild(outputCond);
+        var CondResultDiv = document.createElement("div");
+        CondResultDiv.className = "CondResultDiv" + arrayIndex;
+        var body = document.getElementsByClassName("outputDiv" + arrayIndex)[0];
+        body.appendChild(CondResultDiv);
+
+
+
+        /* 조건(제목) 넣어주기 */
+        for(j=0; j<array[i][0].length; j++) {
+            var outputCond = document.createElement("span");
+            outputCond.className = ("outputCond" + arrayIndex);
+            outputCond.innerHTML = array[i][0][j];
+            outputCond.style.paddingRight = "8px";
+            outputCond.style.opacity = "0.6";
+            var body = document.getElementsByClassName("CondDiv" + arrayIndex)[0];
+            body.appendChild(outputCond);
+        }
+
+        /* 결과(내용) 넣어주기 */
+        for(j=0; j<array[i][1].length; j++) {
+            var outputResult = document.createElement("span");
+            outputResult.className = ("outputResult" + arrayIndex);
+            outputResult.innerHTML = array[i][1][j];
+            outputResult.style.fontSize = "17px";
+            outputResult.style.fontWeight = "bold";
+            outputResult.style.paddingRight = "8px";
+            var body = document.getElementsByClassName("CondResultDiv" + arrayIndex)[0];
+            body.appendChild(outputResult);
+        }
     }
-
-    /* 결과(내용) 넣어주기 */
-    var outputResult = document.createElement("span");
-    outputResult.className = ("outputResult" + arrayIndex);
-    resultIndex = array.length-1;
-    outputResult.innerHTML = array[resultIndex];
-    outputResult.style.fontSize = "17px";
-    outputResult.style.fontWeight = "bold";
-    var body = document.getElementsByClassName("outputDiv" + arrayIndex)[0];
-    body.appendChild(outputResult);
 }
