@@ -364,31 +364,15 @@ function searchWithTags() {
         }
     }
     var mixArray = [];
-        switch(sameTagArray.length) {
-            case 5:
-                for(g = 0; g < sameTagArray.length-4; g++) {
-                    for(h = g+1; h < sameTagArray.length-3; h++) {
-                        for (k = h+1; k < sameTagArray.length-2; k++) {
-                            for (i = k+1; i < sameTagArray.length-1; i++) {
-                                for (j = i+1; j < sameTagArray.length; j++) {
-                                    var buffer = [[]];
-                                    buffer[0].push(sameTagArray[g]);
-                                    buffer[0].push(sameTagArray[h]);
-                                    buffer[0].push(sameTagArray[k]);
-                                    buffer[0].push(sameTagArray[i]);
-                                    buffer[0].push(sameTagArray[j]);
-                                    mixArray.push(buffer[0]);
-                                }
-                            }
-                        }
-                    }    
-                }
-            case 4:
-                for(h = 0; h < sameTagArray.length-3; h++) {
+    switch(sameTagArray.length) {
+        case 5:
+            for(g = 0; g < sameTagArray.length-4; g++) {
+                for(h = g+1; h < sameTagArray.length-3; h++) {
                     for (k = h+1; k < sameTagArray.length-2; k++) {
                         for (i = k+1; i < sameTagArray.length-1; i++) {
                             for (j = i+1; j < sameTagArray.length; j++) {
                                 var buffer = [[]];
+                                buffer[0].push(sameTagArray[g]);
                                 buffer[0].push(sameTagArray[h]);
                                 buffer[0].push(sameTagArray[k]);
                                 buffer[0].push(sameTagArray[i]);
@@ -397,12 +381,15 @@ function searchWithTags() {
                             }
                         }
                     }
-                } 
-            case 3:
-                for (k = 0; k < sameTagArray.length-2; k++) {
+                }    
+            }
+        case 4:
+            for(h = 0; h < sameTagArray.length-3; h++) {
+                for (k = h+1; k < sameTagArray.length-2; k++) {
                     for (i = k+1; i < sameTagArray.length-1; i++) {
                         for (j = i+1; j < sameTagArray.length; j++) {
                             var buffer = [[]];
+                            buffer[0].push(sameTagArray[h]);
                             buffer[0].push(sameTagArray[k]);
                             buffer[0].push(sameTagArray[i]);
                             buffer[0].push(sameTagArray[j]);
@@ -410,26 +397,38 @@ function searchWithTags() {
                         }
                     }
                 }
-            case 2:
-                for (i = 0; i < sameTagArray.length-1; i++) {
+            } 
+        case 3:
+            for (k = 0; k < sameTagArray.length-2; k++) {
+                for (i = k+1; i < sameTagArray.length-1; i++) {
                     for (j = i+1; j < sameTagArray.length; j++) {
                         var buffer = [[]];
+                        buffer[0].push(sameTagArray[k]);
                         buffer[0].push(sameTagArray[i]);
                         buffer[0].push(sameTagArray[j]);
                         mixArray.push(buffer[0]);
                     }
                 }
-            case 1:
-                //1
-                for (i in sameTagArray) {
+            }
+        case 2:
+            for (i = 0; i < sameTagArray.length-1; i++) {
+                for (j = i+1; j < sameTagArray.length; j++) {
                     var buffer = [[]];
                     buffer[0].push(sameTagArray[i]);
+                    buffer[0].push(sameTagArray[j]);
                     mixArray.push(buffer[0]);
                 }
-            case 0:
-                //쟌넨
-        }
-
+            }
+        case 1:
+            //1
+            for (i in sameTagArray) {
+                var buffer = [[]];
+                buffer[0].push(sameTagArray[i]);
+                mixArray.push(buffer[0]);
+            }
+        case 0:
+            //쟌넨
+    }
     var mixArray3 = [];
     for(i in mixArray) {
         var flag2 = 0;
@@ -448,14 +447,23 @@ function searchWithTags() {
         }
         if(flag2) {
             mixArray2[0].push(mixArray[i]);
+
+            //buffer[0]을 캐릭터 등급으로 분리
+
             mixArray2[0].push(buffer[0]);
             mixArray3.push(mixArray2[0]);
         }
 
     }
-    /* 태그 별로 묶는 거 필요함*/
-    /* 정렬 필요함 */
     makeOutputDiv(mixArray3);
+}
+
+function charStar(charName) {
+    for(z in combinationDB) {
+        if(combinationDB[z][1] == charName) {
+            return combinationDB[z][0];
+        }
+    } 
 }
 
 function makeOutputDiv(array) {
@@ -472,9 +480,9 @@ function makeOutputDiv(array) {
         outputDiv.style.paddingBottom = "12px";
         outputDiv.style.flexDirection = "column";
         outputDiv.style.textAlign = "left";
-        outputDiv.style.paddingLeft = "15px"
-        outputDiv.style.paddingRight = "15px"
-        outputDiv.style.marginBottom = "12px"
+        outputDiv.style.paddingLeft = "15px";
+        outputDiv.style.paddingRight = "15px";
+        outputDiv.style.marginBottom = "12px";
         var body = document.getElementById("outputArea");
         body.appendChild(outputDiv);
 
@@ -485,9 +493,10 @@ function makeOutputDiv(array) {
 
         var CondResultDiv = document.createElement("div");
         CondResultDiv.className = "CondResultDiv" + arrayIndex;
+        CondResultDiv.style.display = "flex";
+        CondResultDiv.style.flexWrap = "wrap";
         var body = document.getElementsByClassName("outputDiv" + arrayIndex)[0];
         body.appendChild(CondResultDiv);
-
 
 
         /* 조건(제목) 넣어주기 */
@@ -506,6 +515,28 @@ function makeOutputDiv(array) {
             var outputResult = document.createElement("span");
             outputResult.className = ("outputResult" + arrayIndex);
             outputResult.innerHTML = array[i][1][j];
+            var charStar2 = charStar(array[i][1][j]);
+            console.log(charStar2);
+            switch(Number(charStar2)) {
+                case 1:
+                    outputResult.style.color = "rgb(255, 255, 255)";
+                    break;
+                case 2:
+                    outputResult.style.color = "rgb(157, 255, 17)";
+                    break;
+                case 3:
+                    outputResult.style.color = "rgb(86, 142, 255)";
+                    break;
+                case 4:
+                    outputResult.style.color = "rgb(199, 90, 255)";
+                    break;
+                case 5:
+                    outputResult.style.color = "rgb(255, 210, 17)";
+                    break;
+                case 6:
+                    outputResult.style.color = "rgb(255, 78, 17)";
+                    break;
+            }
             outputResult.style.fontSize = "17px";
             outputResult.style.fontWeight = "bold";
             outputResult.style.paddingRight = "8px";
