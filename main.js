@@ -73,69 +73,78 @@ let combinationDBkr = [
     ["1", "Lancet-2", ["메딕", "원거리", "힐링", "로봇"]],
     ["1", "Castle-3", ["가드", "근거리", "서포트", "로봇"]]
 ];
-var combinationDBjp = [
-    ["先鋒タイプ", "支援", "★5 지마"],
-    ["COST回復", "支援", "★5 지마"],
-    ["先鋒タイプ", "牽制", "★5 텍서스"],
-    ["COST回復", "牽制", "★5 텍서스"],
-    ["爆発力", "★5 파이어워치"],
-    ["範囲攻撃", "弱化", "★5 메테오리테"],
-    ["医療タイプ", "支援", "★5 프틸롭시스, 와파린"],
-    ["支援", "治療", "★5 프틸롭시스, 와파린"],
-    ["支援", "遠距離", "★5 프틸롭시스, 와파린"],
-    ["重装タイプ", "生存", "★5 불칸"],
-    ["防御", "生存", "★5 불칸"],
-    ["防御", "火力", "★5 불칸, 리스캄"],
-    ["重装タイプ", "強制移動", "★5 크루아상"],
-    ["防御", "強制移動", "★5 크루아상"],
-    ["弱化", "補助タイプ", "★5 프라마닉스"],
-    ["火力", "補助タイプ", "★5 이스티나"],
-    ["召喚", "★5 메이어"],
-    ["補助タイプ" ,"牽制", "★5 메이어"],
-    ["遠距離", "牽制", "★5 메이어"],
-    ["牽制", "高速再配置", "★5 레드"],
-    ["牽制", "特殊タイプ", "★5 레드"],
-    ["特殊タイプ", "火力", "★5 만티코어, 클리프하트"],
-    ["特殊タイプ", "生存", "★5 만티코어, 클리프하트"],
-    ["特殊タイプ", "減速", "★5 에프이터"],
-    ["減速", "強制移動", "★5 에포이터"],
-    ["強制移動", "火力", "★5 클리프하트"],
-    ["牽制", "★5 레드, 텍사스, 메이어"],
-    ["牽制", "近距離", "★5 텍사스, 레드"],
-    ["範囲攻撃", "狙撃タイプ", "★4 이상 메테오리테, 시라유키"],
-    ["範囲攻撃", "減速", "★4 이상 시라유키"],
-    ["生存", "狙撃タイプ", "★4 이상 제시카"],
-    ["生存", "遠距離", "★4 이상 제시카"],
-    ["弱化", "狙撃タイプ", "★4 이상 메테오리테, 메테오"],
-    ["弱化", "術師タイプ", "★4 이상 헤이즈"],
-    ["支援", "前衛タイプ", "★4 이상 도베르만"],
-    ["支援", "火力" ,"★4 이상 도베르만"],
-    ["範囲攻撃", "前衛タイプ", "★4 이상 스펙터, 에스텔"],
-    ["範囲攻撃", "生存", "★4 이상 스펙터, 에스텔"],
-    ["範囲攻撃", "近距離", "★4 이상 스펙터, 에스텔"],
-    ["減速", "前衛タイプ", "★4 이상 프로스트리프"],
-    ["治療", "防御", "★4 이상 니어, 굼"],
-    ["治療", "重装タイプ", "★4 이상 니어, 굼"],
-    ["治療", "近距離", "★4 이상 니어, 굼"],
-    ["防御", "男性隊員", "★4 이상 마터호른"],
-    ["男性隊員", "重装タイプ", "★4 이상 마터호른"],
-    ["男性隊員", "近距離", "★4 이상 마터호른"],
-    ["特殊タイプ", "★4 이상 레드, 만티코어, 클리프하트, 에프이터, 쇼, 로프, 그라벨"],
-    ["高速再配置", "★4 이상 그라벨, 레드"],
-    ["特殊タイプ", "防御", "★4 그라벨"],
-    ["高速再配置", "防御", "★4 이상 그라벨"],
-    ["特殊タイプ", "強制移動", "★4 이상 클리프하트, 에프이터, 로프, 쇼"],
-    ["強制移動", "★4 이상 클리프하트, 에프이터, 로프, 쇼, 크루아상"],
-    ["支援", "★4 이상 지마, 프틸롭시스, 와파린, 도베르만"],
-    ["弱化", "★4 이상 메테오리테, 프라마닉스, 헤이즈, 메테오"],
-    ["弱化", "火力", "★4 이상 헤이즈, 메테오"],
-    ["減速", "近距離", "★4 이상 프로스트리프, 에프이터"],
-    ["減速", "火力", "★4 이상 이스티나, 프로스트리프"],
-    ["支援", "近距離", "★4 이상 도베르만, 지마"],
-    ["エリート", "★5 확정"],
-    ["上級エリート", "★6 확정"],
-    ["初期", "★2 확정"],
-    ["ロボット", "★1 Lancet-2"]
+let combinationDBjp = [
+    ["6", "시즈", ["先鋒タイプ", "近距離", "COST回復", "火力", "上級エリート"]],
+    ["6", "샤이닝", ["医療タイプ", "遠距離", "支援", "治療", "上級エリート"]],
+    ["6", "나이팅게일", ["医療タイプ", "遠距離", "治療", "支援", "上級エリート"]],
+    ["6", "이프리트", ["術師タイプ", "遠距離", "範囲攻撃", "弱化", "上級エリート"]],
+    ["6", "엑시아", ["狙撃タイプ", "遠距離", "火力", "上級エリート"]],
+    ["6", "실버애쉬", ["前衛タイプ", "近距離", "火力", "支援", "上級エリート"]],
+    ["6", "호시구마", ["重装タイプ", "近距離", "火力", "防御", "上級エリート"]],
+    ["6", "사리아", ["重装タイプ", "近距離", "支援", "防御", "治療", "上級エリート"]],
+    ["5", "텍사스", ["先鋒タイプ", "牽制", "近距離", "COST回復", "エリート"]],
+    ["5", "지마", ["先鋒タイプ", "支援", "近距離", "COST回復", "エリート"]],
+    ["5", "프틸롭시스", ["医療タイプ", "遠距離", "治療", "支援", "エリート"]],
+    ["5", "사일런스", ["医療タイプ", "遠距離", "治療", "エリート"]],
+    ["5", "와파린", ["医療タイプ", "遠距離", "治療", "支援", "エリート"]],
+    ["5", "레드", ["特殊タイプ", "近距離", "牽制", "高速再配置", "エリート"]],
+    ["5", "맨티코어", ["特殊タイプ", "生存", "近距離", "火力", "エリート"]],
+    ["5", "클리프하트", ["特殊タイプ", "火力", "近距離", "強制移動", "エリート"]],
+    ["5", "에프이터", ["特殊タイプ", "減速", "近距離", "強制移動", "エリート"]],
+    ["5", "프로방스", ["狙撃タイプ", "遠距離", "火力", "エリート"]],
+    ["5", "블루포이즌", ["狙撃タイプ", "遠距離", "火力", "エリート"]],
+    ["5", "파이어워치", ["狙撃タイプ", "遠距離", "火力", "爆発力", "エリート"]],
+    ["5", "메테오라이트", ["狙撃タイプ", "遠距離", "範囲攻撃", "弱化", "エリート"]],
+    ["5", "플래티넘", ["狙撃タイプ", "遠距離", "火力", "エリート"]],
+    ["5", "프라마닉스", ["補助タイプ", "遠距離", "弱化", "エリート"]],
+    ["5", "이스티나", ["補助タイプ", "遠距離", "減速", "火力", "エリート"]],
+    ["5", "메이어", ["補助タイプ", "遠距離", "召喚", "牽制", "エリート"]],
+    ["5", "스펙터", ["前衛タイプ", "近距離", "範囲攻撃", "生存", "エリート"]],
+    ["5", "인드라", ["前衛タイプ", "近距離", "火力", "生存", "エリート"]],
+    ["5", "니어", ["重装タイプ", "近距離", "防御", "治療", "エリート"]],
+    ["5", "리스캄", ["重装タイプ", "近距離", "防御", "火力", "エリート"]],
+    ["5", "벌컨", ["重装タイプ", "近距離", "火力", "防御", "生存", "エリート"]],
+    ["5", "크루아상", ["重装タイプ", "近距離", "強制移動", "防御", "エリート"]],
+    ["4", "스캐빈저", ["先鋒タイプ", "近距離", "COST回復", "火力"]],
+    ["4", "비그나", ["先鋒タイプ", "近距離", "火力", "COST回復"]],
+    ["4", "미르", ["医療タイプ", "遠距離", "治療"]],
+    ["4", "퍼퓨머", ["医療タイプ", "遠距離", "治療"]],
+    ["4", "헤이즈", ["術師タイプ", "弱化", "遠距離", "火力"]],
+    ["4", "기타노", ["術師タイプ", "遠距離", "範囲攻撃"]],
+    ["4", "그라벨", ["特殊タイプ", "近距離", "高速再配置", "防御"]],
+    ["4", "로프", ["特殊タイプ", "近距離", "強制移動"]],
+    ["4", "쇼", ["特殊タイプ", "近距離", "強制移動"]],
+    ["4", "시라유키", ["狙撃タイプ", "遠距離", "範囲攻撃", "減速"]],
+    ["4", "메테오", ["狙撃タイプ", "遠距離", "火力", "弱化"]],
+    ["4", "제시카", ["狙撃タイプ", "遠距離", "火力", "生存"]],
+    ["4", "어스스피릿", ["補助タイプ", "遠距離", "減速"]],
+    ["4", "도베르만", ["前衛タイプ", "近距離", "支援", "火力"]],
+    ["4", "에스텔", ["前衛タイプ", "近距離", "範囲攻撃", "生存"]],
+    ["4", "무스", ["前衛タイプ", "近距離", "火力"]],
+    ["4", "프로스트리프", ["前衛タイプ", "近距離", "減速", "火力"]],
+    ["4", "마토이마루", ["前衛タイプ", "火力", "近距離", "生存"]],
+    ["4", "쿠오라", ["重装タイプ", "近距離", "防御"]],
+    ["4", "굼", ["重装タイプ", "近距離", "防御", "治療"]],
+    ["4", "마터호른", ["重装タイプ", "近距離", "防御"]],
+    ["3", "팽", ["뱅前衛タイプ", "近距離", "COST回復"]],
+    ["3", "바닐라", ["뱅前衛タイプ", "近距離", "COST回復"]],
+    ["3", "플룸", ["뱅前衛タイプ", "近距離", "火力", "COST回復"]],
+    ["3", "히비스커스", ["医療タイプ", "遠距離", "治療"]],
+    ["3", "안셀", ["医療タイプ", "遠距離", "治療"]],
+    ["3", "라바", ["術師タイプ", "遠距離", "範囲攻撃"]],
+    ["3", "스튜어드", ["術師タイプ", "遠距離", "火力"]],
+    ["3", "크루스", ["狙撃タイプ", "遠距離", "火力"]],
+    ["3", "아드나키엘", ["狙撃タイプ", "遠距離", "火力"]],
+    ["3", "오키드", ["補助タイプ", "遠距離", "減速"]],
+    ["3", "멜란사", ["前衛タイプ", "近距離", "火力", "生存"]],
+    ["3", "비글", ["重装タイプ", "近距離", "防御"]],
+    ["2", "야토", ["뱅前衛タイプ", "近距離", "初期"]],
+    ["2", "듀린", ["術師タイプ", "遠距離", "初期"]],
+    ["2", "12F", ["術師タイプ", "遠距離", "初期"]],
+    ["2", "레인저", ["狙撃タイプ", "遠距離", "初期"]],
+    ["2", "느와르", ["重装タイプ", "近距離", "初期"]],
+    ["1", "Lancet-2", ["医療タイプ", "遠距離", "治療", "ロボット"]],
+    ["1", "Castle-3", ["前衛タイプ", "近距離", "支援", "ロボット"]]
 ];
 var resultArray = [];
 var array1 = [[]];
@@ -268,17 +277,45 @@ function outputUpdate() {
             }
         });
     }
+    
 }
 
 /* 버튼 활성화, 비활성화 */
 function buttonStatusChanger() {
     for(j=0; j<combinationListDB.length; j++) {
-        document.getElementById(combinationListDB[j]).style.backgroundColor = "#0A84FF"
-        document.getElementById(combinationListDB[j]).style.boxShadow = "0 2px #0068B8"
+        buttonStyler();
     }
     for(i=0; i<tagInput.length; i++) {
-        document.getElementById(tagInput[i]).style.backgroundColor = "#082d4a"
+        var lowestStar = 6;
+        for(l in combinationDB) {
+            if (combinationDB[l][2].indexOf(tagInput[i]) != -1) {
+                if (combinationDB[l][0] < lowestStar) {
+                    lowestStar = combinationDB[l][0];
+                }
+            }
+        }
         document.getElementById(tagInput[i]).style.boxShadow = "none"
+        document.getElementById(tagInput[i]).style.backgroundColor = "rgb(40, 40, 40)"
+        switch(Number(lowestStar)) {
+            case 1:
+                document.getElementById(tagInput[i]).style.color = "#FFF";
+                break;
+            case 2:
+                document.getElementById(tagInput[i]).style.color = "rgb(157, 255, 17)";
+                break;
+            case 3:
+                document.getElementById(tagInput[i]).style.color = "rgb(86, 142, 255)"; 
+                break;
+            case 4:
+                document.getElementById(tagInput[i]).style.color = "rgb(199, 90, 255)"; 
+                break;
+            case 5:
+                document.getElementById(tagInput[i]).style.color = "rgb(255, 210, 17)";
+                break;
+            case 6:
+                document.getElementById(tagInput[i]).style.color = "rgb(255, 78, 17)"; 
+                break;
+        }
     }
 }
 /* 버튼 만들기 */
@@ -290,12 +327,53 @@ function buttonMaker() {
         tagButton.id = combinationListDB[i];
         var body = document.getElementsByClassName("input")[0];
         body.appendChild(tagButton);
+        var lowestStar = 6;
+        for(l in combinationDB) {
+            if (combinationDB[l][2].indexOf(combinationListDB[i]) != -1) {
+                if (combinationDB[l][0] < lowestStar) {
+                    lowestStar = combinationDB[l][0];
+                }
+            }
+        }
+        switch(Number(lowestStar)) {
+            case 1:
+                document.getElementById(combinationListDB[i]).style.backgroundColor = "rgb(255, 255, 255)";
+                document.getElementById(combinationListDB[i]).style.boxShadow = "0 2px #b5b5b5"
+                document.getElementById(combinationListDB[i]).style.color = "#333"
+                break;
+            case 2:
+                document.getElementById(combinationListDB[i]).style.backgroundColor = "rgb(157, 255, 17)";
+                document.getElementById(combinationListDB[i]).style.color = "#333"
+                document.getElementById(combinationListDB[i]).style.boxShadow = "0 2px #26bf23" 
+                break;
+            case 3:
+                document.getElementById(combinationListDB[i]).style.backgroundColor = "rgb(86, 142, 255)";
+                document.getElementById(combinationListDB[i]).style.boxShadow = "0 2px #0270c5" 
+                document.getElementById(combinationListDB[i]).style.color = "#FFF"
+                break;
+            case 4:
+                document.getElementById(combinationListDB[i]).style.backgroundColor = "rgb(199, 90, 255)";
+                document.getElementById(combinationListDB[i]).style.boxShadow = "0 2px #7e00b2" 
+                document.getElementById(combinationListDB[i]).style.color = "#FFF"
+                break;
+            case 5:
+                document.getElementById(combinationListDB[i]).style.backgroundColor = "rgb(255, 210, 17)";
+                document.getElementById(combinationListDB[i]).style.color = "#333"
+                document.getElementById(combinationListDB[i]).style.boxShadow = "0 2px #c18f01" 
+                break;
+            case 6:
+                document.getElementById(combinationListDB[i]).style.backgroundColor = "rgb(255, 78, 17)";
+                document.getElementById(combinationListDB[i]).style.boxShadow = "0 2px #7d2e00"
+                document.getElementById(combinationListDB[i]).style.color = "#FFF" 
+                break;
+        }
         /* 해당 버튼 누를 시, tagInput에 push or splice 그리고 태그 변화 */
         tagButton.addEventListener ("click", function () {
             document.getElementById("outputArea").style.visibility = "hidden";
             inputListMaker(this.id);
             tagInputCountChecker();
             outputUpdate();
+            buttonStyler();
             buttonStatusChanger();
             if(tagInputCount == 0) {
                 refresh();
@@ -304,6 +382,51 @@ function buttonMaker() {
     }
 }
 buttonMaker();
+
+function buttonStyler() {
+    for(i in combinationListDB) {
+        var lowestStar = 6;
+        for(l in combinationDB) {
+            if (combinationDB[l][2].indexOf(combinationListDB[i]) != -1) {
+                if (combinationDB[l][0] < lowestStar) {
+                    lowestStar = combinationDB[l][0];
+                }
+            }
+        }
+        switch(Number(lowestStar)) {
+            case 1:
+                document.getElementById(combinationListDB[i]).style.backgroundColor = "rgb(255, 255, 255)";
+                document.getElementById(combinationListDB[i]).style.boxShadow = "0 2px #b5b5b5"
+                document.getElementById(combinationListDB[i]).style.color = "#333"
+                break;
+            case 2:
+                document.getElementById(combinationListDB[i]).style.backgroundColor = "rgb(157, 255, 17)";
+                document.getElementById(combinationListDB[i]).style.color = "#333"
+                document.getElementById(combinationListDB[i]).style.boxShadow = "0 2px #26bf23" 
+                break;
+            case 3:
+                document.getElementById(combinationListDB[i]).style.backgroundColor = "rgb(86, 142, 255)";
+                document.getElementById(combinationListDB[i]).style.boxShadow = "0 2px #0270c5" 
+                document.getElementById(combinationListDB[i]).style.color = "#FFF"
+                break;
+            case 4:
+                document.getElementById(combinationListDB[i]).style.backgroundColor = "rgb(199, 90, 255)";
+                document.getElementById(combinationListDB[i]).style.boxShadow = "0 2px #7e00b2" 
+                document.getElementById(combinationListDB[i]).style.color = "#FFF"
+                break;
+            case 5:
+                document.getElementById(combinationListDB[i]).style.backgroundColor = "rgb(255, 210, 17)";
+                document.getElementById(combinationListDB[i]).style.color = "#333"
+                document.getElementById(combinationListDB[i]).style.boxShadow = "0 2px #c18f01" 
+                break;
+            case 6:
+                document.getElementById(combinationListDB[i]).style.backgroundColor = "rgb(255, 78, 17)";
+                document.getElementById(combinationListDB[i]).style.boxShadow = "0 2px #7d2e00"
+                document.getElementById(combinationListDB[i]).style.color = "#FFF" 
+                break;
+        }
+    }
+}
 
 
 function refresh() {
@@ -314,6 +437,7 @@ function refresh() {
     tagInputCount = 0;
     buttonStatusChanger();
     outputUpdate();
+    buttonStyler();
     var inputSpan = document.createElement("span");
     inputSpan.id = "placeholder";
     inputSpan.innerHTML = "상단에서 5개의 태그를 선택해주세요"; 
@@ -516,7 +640,6 @@ function makeOutputDiv(array) {
             outputResult.className = ("outputResult" + arrayIndex);
             outputResult.innerHTML = array[i][1][j];
             var charStar2 = charStar(array[i][1][j]);
-            console.log(charStar2);
             switch(Number(charStar2)) {
                 case 1:
                     outputResult.style.color = "rgb(255, 255, 255)";

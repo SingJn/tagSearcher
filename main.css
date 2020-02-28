@@ -63,7 +63,7 @@ button {
     margin-right: 12px;
     margin-bottom: 9px;
     border: none;
-    box-shadow: 0 2px #0068B8;
+    /* box-shadow: 0 2px #0068B8; */
 }
 .input {
     text-align: center;
